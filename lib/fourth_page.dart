@@ -42,7 +42,7 @@ class _FourthPageState extends State<FourthPage> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            'Well, mostly cooking.',
+            'Under development.',
             style: Theme.of(context).textTheme.headline1.copyWith(color: Colors.black, fontSize: 50),
           ),
         )
@@ -63,6 +63,13 @@ class _FourthPageState extends State<FourthPage> {
             ),
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'Under development.',
+            style: Theme.of(context).textTheme.headline1.copyWith(color: Colors.black, fontSize: 50),
+          ),
+        )
       ],
     );
   }

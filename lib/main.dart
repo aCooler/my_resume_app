@@ -2,6 +2,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:my_resume_app/fourth_page.dart';
 import 'package:my_resume_app/hover_widget.dart';
+import 'package:my_resume_app/knowledge.dart';
+import 'package:my_resume_app/projects_page.dart';
 import 'package:my_resume_app/second_page.dart';
 import 'package:my_resume_app/third_page.dart';
 
@@ -17,15 +19,17 @@ void main() => runApp(
             headline1: TextStyle(
               color: Color(0xFFf6f8fd),
             ),
+            headline2: TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+            ),
+            headline3: TextStyle(
+              color: Color(0xFFf6f8fd),
+              fontSize: 30
+            ),
           ),
         ),
-        initialRoute: '/',
-        routes: {
-          '/': (context) => MyHomePage(),
-          '/second': (context) => SecondPage(),
-          '/third': (context) => ThirdPage(),
-          '/fourth': (context) => FourthPage(),
-        },
+        home: const MyHomePage(),
       ),
     );
 
@@ -162,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   //Navigator.of(context).pushNamed('/second');
                   Navigator.of(context).push<dynamic>(
                     _createRoute(
-                      page: SecondPage(),
+                      page: KnowledgePage(),
                     ),
                   );
                 },
@@ -184,7 +188,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onTap: () {
                     Navigator.of(context).push<dynamic>(
                       _createRoute(
-                        page: ThirdPage(),
+                        page: ProjectsPage(),
                       ),
                     );
                   },
