@@ -2,4 +2,4 @@
 
 A new Flutter application.
 
-Working site on [a link](aCooler.github.io)
+Working site on [aCooler.github.io](aCooler.github.io)
