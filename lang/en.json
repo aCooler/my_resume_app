@@ -1,3 +1,33 @@
 {
+  "hire": "HIRE",
+  "name": "Kozak Andrii",
+  "dev": "development on flutter",
+  "experience":"Experience",
+  "projects":"Projects",
+  "hobbies":"Hobbies",
+  "skills": "Skills",
+  "technologies": "Technologies",
+  "skills_overview": "Good understanding of OOP, basic understanding of data structures and algorithms.\nGood working skills with Flutter and basic Android.\nExperience in Flutter widgets, plugins, cross-platform environments.\nMinor experience with Bloc by Felix Angelow.\nExperience in REST, using unpublished site APIs.\nFlutter project on Github: ",
+  "project_link": "https://github.com/aCooler/my_resume_app",
+  "my_cv": "- Implemented website with multiple pages using flutter\n- Implemented opening sites and sending emails with url_launcher plugin\n- Provided custom animation for page transition\n" ,
+  "mastodon_client" : "- Made REST client for images and text messages\n- implemented OAuth 2 with native to flutter communication implemented with plugins\n",
+  "notes":"- Used bloc library for simple app architecture\n- Used plugin for communication with android file system\n- Implemented custom widget for navigation and animation",
+  "under_development": "Under development.",
+  "dart": "Dart",
+  "dart_experience":"major coding experience: basic syntax, asynchronous programing, collections",
+  "kotlin": "Kotlin",
+  "kotlin_experience":"minor experience (two personal projects)",
+  "java": "Java",
+  "java_experience":"major coding experience",
+  "flutter": "Flutter",
+  "flutter_experience":"major coding experience: Widgets Animation, Navigation.",
+  "ukrainian": "Ukrainian",
+  "ukrainian_experience":"fluent",
+  "english": "English",
+  "english_experience":"advanced, B2",
+  "czech": "Czech",
+  "czech_experience":"basic, A2"
 
 }
+
+

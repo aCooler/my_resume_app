@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:my_resume_app/hover_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'app_localizations.dart';
+
 class KnowledgePage extends StatefulWidget {
   const KnowledgePage({
     Key key,
@@ -68,31 +70,6 @@ class _KnowledgePageState extends State<KnowledgePage>
     );
   }
 
-  Widget _portraitView1() {
-    return Stack(
-      fit: StackFit.expand,
-      alignment: Alignment.center,
-      children: <Widget>[
-        Hero(
-          tag: 'avatar',
-          child: Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: Image.asset('photos/w.jpg').image,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
-        Hero(
-          tag: 'list',
-          child: Container(
-              color: Theme.of(context).primaryColor.withOpacity(0.9),
-              child: _selectionForPortrait()),
-        ),
-      ],
-    );
-  }
 
   Widget _selection() {
     final Widget selection = Column(
@@ -115,7 +92,7 @@ class _KnowledgePageState extends State<KnowledgePage>
                   );
                 },
                 child: Text(
-                  'Skills',
+                  AppLocalizations.of(context).translate('skills'),
                   style: Theme.of(context).textTheme.headline1,
                 ),
               ),
@@ -135,7 +112,7 @@ class _KnowledgePageState extends State<KnowledgePage>
                     );
                   },
                   child: Text(
-                    'Technologies',
+                    AppLocalizations.of(context).translate('technologies'),
                     style: Theme.of(context).textTheme.headline1,
                   ),
                 ),
@@ -155,9 +132,7 @@ class _KnowledgePageState extends State<KnowledgePage>
     return selection;
   }
 
-  Widget _selectionForPortrait(
-
-      ) {
+  Widget _selectionForPortrait() {
     final Widget selection = Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -178,8 +153,10 @@ class _KnowledgePageState extends State<KnowledgePage>
                   );
                 },
                 child: Text(
-                  'Skills',
-                  style: Theme.of(context).textTheme.headline1.copyWith(fontSize: 40,),
+                  AppLocalizations.of(context).translate('skills'),
+                  style: Theme.of(context).textTheme.headline1.copyWith(
+                        fontSize: 40,
+                      ),
                 ),
               ),
             ),
@@ -198,15 +175,16 @@ class _KnowledgePageState extends State<KnowledgePage>
                     );
                   },
                   child: Text(
-                    'Technologies',
-                    style: Theme.of(context).textTheme.headline1.copyWith(fontSize: 40,),
+                    AppLocalizations.of(context).translate('technologies'),
+                    style: Theme.of(context).textTheme.headline1.copyWith(
+                          fontSize: 40,
+                        ),
                   ),
                 ),
               ),
             ),
           ),
         ),
-
         const Spacer(
           flex: 50,
         ),
@@ -224,153 +202,6 @@ class _KnowledgePageState extends State<KnowledgePage>
     return selection;
   }
 
-  Widget _selectionForPortrait1() {
-    final Widget selection = Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-        const Spacer(
-          flex: 300,
-        ),
-        Expanded(
-          flex: 160,
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            child: HoverWidget(
-              child: GestureDetector(
-                onTap: () {
-                  _buttonPushed(
-                    pageNumber: 0,
-                  );
-                },
-                child: Text(
-                  'Skills',
-                  style: Theme.of(context).textTheme.headline3,
-                ),
-              ),
-            ),
-          ),
-        ),
-        Expanded(
-          flex: 240,
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Container(
-              child: HoverWidget(
-                child: GestureDetector(
-                  onTap: () {
-                    _buttonPushed(
-                      pageNumber: 1,
-                    );
-                  },
-                  child: Text(
-                    'Technologies',
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-        Expanded(
-          flex: 1408,
-          child: Container(
-            color: Colors.white.withOpacity(0.7),
-            child: _textTabs(context: context),
-          ),
-        ),
-      ],
-    );
-
-    return selection;
-  }
-
-  Widget _textDetails({BuildContext context}) {
-    return SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Skills',
-              style: Theme.of(context).textTheme.headline2,
-            ),
-          ),
-          Text(
-            'Good understanding of OOP, basic understanding of data structures and algorithms.\n'
-            'Good working skills with Flutter and basic Android.\n'
-            'Experience in Flutter widgets, plugins, cross-platform environments.\n'
-            'Minor experience with Bloc by Felix Angelow.\n'
-            'Experience in REST, using unpublished site APIs.',
-            style: Theme.of(context).textTheme.headline2,
-          ),
-          RichText(
-            text: TextSpan(
-                style: Theme.of(context).textTheme.headline2,
-                text: 'Flutter project on Github: ',
-                children: <TextSpan>[
-                  TextSpan(
-                    text: 'https://github.com/aCooler/my_resume_app',
-                    style: Theme.of(context).textTheme.headline2.copyWith(
-                          decoration: TextDecoration.underline,
-                        ),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () async {
-                        const String url =
-                            'https://github.com/aCooler/my_resume_app';
-                        final bool shouldLaunch = await canLaunch(url);
-                        shouldLaunch
-                            ? await launch(url)
-                            : throw 'Could not launch $url';
-                      },
-                  ),
-                ]),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Technologies',
-              style: Theme.of(context).textTheme.headline2,
-            ),
-          ),
-          DefaultTextStyle(
-            style: Theme.of(context).textTheme.headline2,
-            child: Table(
-              defaultVerticalAlignment: TableCellVerticalAlignment.top,
-              columnWidths: {1: FractionColumnWidth(.7)},
-              children: const <TableRow>[
-                TableRow(children: <Widget>[
-                  Text(
-                    'Java',
-                  ),
-                  Text('good coding experience')
-                ]),
-                TableRow(children: <Text>[
-                  Text('Kotlin'),
-                  Text('minor experience (two personal projects)')
-                ]),
-                TableRow(children: <Text>[
-                  Text('Dart'),
-                  Text(
-                      'major coding experience: basic syntax, asynchronous programing, collections')
-                ]),
-                TableRow(children: <Text>[
-                  Text('Flutter'),
-                  Text(
-                      'major coding experience: Widgets, Animation, Navigation.')
-                ]),
-                TableRow(children: <Text>[Text('Ukrainian'), Text('fluent')]),
-                TableRow(
-                    children: <Text>[Text('English'), Text('advanced, B2')]),
-                TableRow(children: <Text>[Text('Czech'), Text('basic, A2')]),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   Widget _textTabs({BuildContext context}) {
     return TabBarView(
@@ -383,39 +214,30 @@ class _KnowledgePageState extends State<KnowledgePage>
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Skills',
+                  AppLocalizations.of(context).translate('skills'),
                   style: Theme.of(context).textTheme.headline2,
                 ),
               ),
               Text(
-                'Good understanding of OOP, basic understanding of data structures and algorithms.\n'
-                'Good working skills with Flutter and basic Android.\n'
-                'Experience in Flutter widgets, plugins, cross-platform environments.\n'
-                'Minor experience with Bloc by Felix Angelow.\n'
-                'Experience in REST, using unpublished site APIs.',
+                AppLocalizations.of(context).translate('skills_overview'),
                 style: Theme.of(context).textTheme.headline2,
               ),
               RichText(
                 text: TextSpan(
-                    style: Theme.of(context).textTheme.headline2,
-                    text: 'Flutter project on Github: ',
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: 'https://github.com/aCooler/my_resume_app',
-                        style: Theme.of(context).textTheme.headline2.copyWith(
-                              decoration: TextDecoration.underline,
-                            ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () async {
-                            const String url =
-                                'https://github.com/aCooler/my_resume_app';
-                            final bool shouldLaunch = await canLaunch(url);
-                            shouldLaunch
-                                ? await launch(url)
-                                : throw 'Could not launch $url';
-                          },
+                  text: AppLocalizations.of(context).translate('project_link'),
+                  style: Theme.of(context).textTheme.headline2.copyWith(
+                        decoration: TextDecoration.underline,
                       ),
-                    ]),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () async {
+                      const String url =
+                          'https://github.com/aCooler/my_resume_app';
+                      final bool shouldLaunch = await canLaunch(url);
+                      shouldLaunch
+                          ? await launch(url)
+                          : throw 'Could not launch $url';
+                    },
+                ),
               ),
             ],
           ),
@@ -426,7 +248,7 @@ class _KnowledgePageState extends State<KnowledgePage>
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Technologies',
+                  AppLocalizations.of(context).translate('technologies'),
                   style: Theme.of(context).textTheme.headline2,
                 ),
               ),
@@ -435,35 +257,35 @@ class _KnowledgePageState extends State<KnowledgePage>
                 child: Table(
                   defaultVerticalAlignment: TableCellVerticalAlignment.top,
                   columnWidths: {1: FractionColumnWidth(.7)},
-                  children: const <TableRow>[
+                  children:  <TableRow>[
                     TableRow(children: <Widget>[
                       Text(
-                        'Java',
+                          AppLocalizations.of(context).translate('java'),
                       ),
-                      Text('good coding experience')
+                      Text(AppLocalizations.of(context).translate('java_experience'),)
                     ]),
                     TableRow(children: <Text>[
-                      Text('Kotlin'),
-                      Text('minor experience (two personal projects)')
+                      Text(AppLocalizations.of(context).translate('kotlin'),),
+                      Text(AppLocalizations.of(context).translate('kotlin_experience'),)
                     ]),
                     TableRow(children: <Text>[
-                      Text('Dart'),
+                      Text(AppLocalizations.of(context).translate('dart'),),
                       Text(
-                          'major coding experience: basic syntax, asynchronous programing, collections')
+                          AppLocalizations.of(context).translate('dart_experience'),)
                     ]),
                     TableRow(children: <Text>[
-                      Text('Flutter'),
+                      Text(AppLocalizations.of(context).translate('flutter'),),
                       Text(
-                          'major coding experience: Widgets, Animation, Navigation.')
+                          AppLocalizations.of(context).translate('flutter_experience'),)
+                    ]),
+                      TableRow(
+                          children: <Text>[Text(AppLocalizations.of(context).translate('ukrainian')), Text(AppLocalizations.of(context).translate('ukrainian_experience'))]),
+                      TableRow(children: <Text>[
+                      Text(AppLocalizations.of(context).translate('english'),),
+                        Text(AppLocalizations.of(context).translate('english_experience'),),
                     ]),
                     TableRow(
-                        children: <Text>[Text('Ukrainian'), Text('fluent')]),
-                    TableRow(children: <Text>[
-                      Text('English'),
-                      Text('advanced, B2')
-                    ]),
-                    TableRow(
-                        children: <Text>[Text('Czech'), Text('basic, A2')]),
+                        children: <Text>[Text(AppLocalizations.of(context).translate('czech'),), Text(AppLocalizations.of(context).translate('czech_experience'),)]),
                   ],
                 ),
               ),
@@ -486,7 +308,8 @@ class _KnowledgePageState extends State<KnowledgePage>
         Hero(
           tag: 'list',
           child: Container(
-              color: Theme.of(context).primaryColor, child: _selectionForPortrait()),
+              color: Theme.of(context).primaryColor,
+              child: _selectionForPortrait()),
         ),
       ],
     );

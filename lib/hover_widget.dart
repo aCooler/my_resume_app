@@ -24,7 +24,7 @@ class _HoverWidgetState extends State<HoverWidget>
     super.initState();
     _controller = AnimationController(
       vsync: this, // the SingleTickerProviderStateMixin
-      duration: Duration(
+      duration: const Duration(
         milliseconds: 200,
       ),
     )..addListener(() {
@@ -68,7 +68,6 @@ class _HoverWidgetState extends State<HoverWidget>
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _controller.dispose();
     super.dispose();
   }

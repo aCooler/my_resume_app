@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'app_localizations.dart';
+
 class FourthPage extends StatefulWidget {
   @override
   _FourthPageState createState() => _FourthPageState();
 }
-
 
 class _FourthPageState extends State<FourthPage> {
   @override
@@ -42,8 +43,11 @@ class _FourthPageState extends State<FourthPage> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            'Under development.',
-            style: Theme.of(context).textTheme.headline1.copyWith(color: Colors.black, fontSize: 50),
+            AppLocalizations.of(context).translate('under_development'),
+            style: Theme.of(context)
+                .textTheme
+                .headline1
+                .copyWith(color: Colors.black, fontSize: 50),
           ),
         )
       ],
@@ -66,14 +70,14 @@ class _FourthPageState extends State<FourthPage> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            'Under development.',
-            style: Theme.of(context).textTheme.headline1.copyWith(color: Colors.black, fontSize: 50),
+            AppLocalizations.of(context).translate('under_development'),
+            style: Theme.of(context)
+                .textTheme
+                .headline1
+                .copyWith(color: Colors.black, fontSize: 50),
           ),
         )
       ],
     );
   }
-
-
 }
-
