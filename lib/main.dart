@@ -10,52 +10,54 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'app_localizations.dart';
 
-void main() => runApp(ChangeNotifierProvider(
-      create: (_) => LocaleModel(),
-      child: Consumer<LocaleModel>(
-        builder: (context, provider, child) => MaterialApp(
-          locale: Provider.of<LocaleModel>(context).locale,
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-            primaryColor: const Color(0xFF2e39e0),
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            cardColor: Colors.grey,
-            textTheme: const TextTheme(
-              headline1: TextStyle(
-                color: Color(0xFFf6f8fd),
+void main() => runApp(
+      ChangeNotifierProvider(
+        create: (_) => LocaleModel(),
+        child: Consumer<LocaleModel>(
+          builder: (BuildContext context, provider, Widget child) => MaterialApp(
+            locale: Provider.of<LocaleModel>(context).locale,
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+              primaryColor: const Color(0xFF2e39e0),
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              cardColor: Colors.grey,
+              textTheme: const TextTheme(
+                headline1: TextStyle(
+                  color: Color(0xFFf6f8fd),
+                ),
+                headline2: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                ),
+                headline3: TextStyle(color: Color(0xFFf6f8fd), fontSize: 30),
               ),
-              headline2: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-              ),
-              headline3: TextStyle(color: Color(0xFFf6f8fd), fontSize: 30),
             ),
-          ),
-          supportedLocales: <Locale>[
-            Locale('en', 'US'),
-            Locale('uk', 'UK'),
-          ],
-          localizationsDelegates: [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-          ],
-          localeResolutionCallback: (locale, supportedLocales) {
-            for (Locale supportedLocale in supportedLocales) {
-              if (supportedLocale != null &&
-                  supportedLocale.languageCode != null) {
-                if (supportedLocale.languageCode == locale.languageCode) {
-                  return supportedLocale;
+            supportedLocales: <Locale>[
+              Locale('en', 'US'),
+              Locale('uk', 'UK'),
+            ],
+            localizationsDelegates: [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+            ],
+            localeResolutionCallback: (Locale locale, supportedLocales) {
+              for (Locale supportedLocale in supportedLocales) {
+                if (supportedLocale != null &&
+                    supportedLocale.languageCode != null) {
+                  if (supportedLocale.languageCode == locale.languageCode) {
+                    return supportedLocale;
+                  }
                 }
               }
-            }
-            return supportedLocales.first;
-          },
-          home: const MyHomePage(),
+              return supportedLocales.first;
+            },
+            home: const MyHomePage(),
+          ),
         ),
       ),
-    ));
+    );
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({
@@ -211,7 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onTap: () {
                     Navigator.of(context).push<dynamic>(
                       _createRoute(
-                        page: ProjectsPage(),
+                        page: const ProjectsPage(),
                       ),
                     );
                   },
@@ -261,14 +263,14 @@ class _MyHomePageState extends State<MyHomePage> {
             fit: BoxFit.fill,
             child: FlatButton(
               disabledColor: Theme.of(context).textTheme.headline1.color,
-              child:  Padding(
+              child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   AppLocalizations.of(context).translate('hire'),
                   style: Theme.of(context).textTheme.headline2,
-                  ),
+                ),
               ),
-              onPressed: (){
+              onPressed: () {
                 final Uri _emailLaunchUri = Uri(
                   scheme: 'mailto',
                   path: 'kozakiandriy17@gmail.com',
@@ -277,7 +279,6 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               color: Colors.white,
             ),
-
           ),
         ),
         const Spacer(
@@ -299,9 +300,9 @@ class _MyHomePageState extends State<MyHomePage> {
               onToggle: (int index) {
                 index == 0
                     ? Provider.of<LocaleModel>(context, listen: false)
-                        .changelocale(const Locale("en"))
+                        .changelocale(const Locale('en'))
                     : Provider.of<LocaleModel>(context, listen: false)
-                        .changelocale(const Locale("uk"));
+                        .changelocale(const Locale('uk'));
               },
             ),
           ),

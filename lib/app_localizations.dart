@@ -54,7 +54,7 @@ class _AppLocalizationsDelegate
 }
 
 class LocaleModel with ChangeNotifier {
-  Locale locale = Locale('uk');
+  Locale locale = const Locale('uk');
   Locale get getlocale => locale;
   void changelocale(Locale l) {
     locale = l;
